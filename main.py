@@ -14,20 +14,18 @@ except FileNotFoundError:
     open('spawnPluginThingyStuffs/stuffs.json','a').write(r"{}").close()
     e = json.loads(open('spawnPluginThingyStuffs/stuffs.json').read())
 except Exception as exception:
-    print(f'There was an unhandeled exception: {exception}')# check dc already smh
+    print(f'There was an unhandeled exception: {exception}')
 
 @asynchronous()
-def spawncmd(caller, params):# so why don't we put player instead of params xd
+def spawncmd(caller, params):
     player = caller.getPlayer()
-    playerid = player.getUniqueId()# nvm that xD
-    try:# xDD check discord this cmd is working 
+    playerid = player.getUniqueId()
+    try: 
         player.teleport(e[playerid]['coords'].world,e[playerid]['coords'].x,e[playerid]['coords'].y,e[playerid]['coords'].z)
         yell("I have set your spawn to %s" % location(player))
     except KeyError:
         yell("&l&cYou dont have a spawn set. Please try again but first run the /setspawn command.")
-# try again? okok 
-# xd
-# uwu# u need to import color from bukkit xd
+
 @asynchronous()
 def spawnset(caller, params):
     plr = caller.getPlayer()
